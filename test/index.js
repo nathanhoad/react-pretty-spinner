@@ -6,18 +6,28 @@ const Loading = require('../lib');
 
 
 describe('Spinner', () => {
-    
+
     it('renders with no props', (done) => {
         let loader = shallow(<Loading />);
-        
+
         expect(loader.html()).to.contain("<svg");
         expect(loader.html()).to.contain("<circle");
         expect(loader.html()).to.contain("</svg>");
-        
+
         done();
     });
-    
-    
+
+    it('renders with no props and extraStyle', (done) => {
+        let loader = shallow(<Loading extraStyle={{display: 'inline-block', color: '#123456', marginLeft: '30px', top: '10px'}} />);
+
+        expect(loader.html()).to.contain("<svg");
+        expect(loader.html()).to.contain("<circle");
+        expect(loader.html()).to.contain("</svg>");
+
+        done();
+    });
+
+
     it('renders with children', (done) => {
         let loader = shallow(
             <Loading isLoading={true}>
@@ -30,7 +40,7 @@ describe('Spinner', () => {
         expect(loader.html()).to.contain("</svg>");
         expect(loader.html()).to.not.contain("Child 1");
         expect(loader.html()).to.not.contain("Child 2");
-        
+
         loader = shallow(
             <Loading isLoading={false}>
                 <div>Child 1</div>
@@ -42,8 +52,8 @@ describe('Spinner', () => {
         expect(loader.html()).to.not.contain("</svg>");
         expect(loader.html()).to.contain("Child 1");
         expect(loader.html()).to.contain("Child 2");
-        
+
         done();
     });
-    
+
 });
