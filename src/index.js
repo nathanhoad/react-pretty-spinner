@@ -69,14 +69,14 @@ class Loading extends React.Component {
         let { isLoading, children } = this.props;
 
         if (isLoading) {
-            let { width, height, margin, extraStyle } = this.props;
+            let { width, height, margin, style } = this.props;
 
             loading_style.width = width;
             loading_style.height = height;
             loading_style.margin = margin;
 
             return (
-                <div style={Object.assign({}, loading_style, extraStyle)}>
+                <div style={Object.assign({}, loading_style, style)}>
                     <style>{animation}</style>
                     <svg style={svg_style} viewBox="25 25 50 50">
                         <circle style={circle_style} cx="50" cy="50" r="20" fill="none" strokeWidth="7" strokeMiterlimit="10"/>
@@ -92,7 +92,7 @@ class Loading extends React.Component {
 
 Loading.propTypes = {
     isLoading: React.PropTypes.bool,
-    extraStyle: React.PropTypes.object,
+    style: React.PropTypes.object,
     width: React.PropTypes.string,
     height: React.PropTypes.string,
     margin: React.PropTypes.string
@@ -101,7 +101,7 @@ Loading.propTypes = {
 
 Loading.defaultProps = {
     isLoading: true,
-    extraStyle: {},
+    style: {},
     width: '40px',
     height: '40px',
     margin: '0 auto'

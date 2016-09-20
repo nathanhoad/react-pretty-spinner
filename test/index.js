@@ -17,9 +17,10 @@ describe('Spinner', () => {
         done();
     });
 
-    it('renders with no props and extraStyle', (done) => {
-        let loader = shallow(<Loading extraStyle={{display: 'inline-block', color: '#123456', marginLeft: '30px', top: '10px'}} />);
+    it('renders with no props and style', (done) => {
+        let loader = shallow(<Loading style={{display: 'inline-block', color: '#123456', marginLeft: '30px', top: '10px'}} />);
 
+        expect(loader.html()).to.contain("display:inline-block;color:#123456;margin-left:30px;top:10px;");
         expect(loader.html()).to.contain("<svg");
         expect(loader.html()).to.contain("<circle");
         expect(loader.html()).to.contain("</svg>");
